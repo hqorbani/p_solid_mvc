@@ -1,5 +1,5 @@
 #create the main function 
-def study_plan_generator(grades, target):
+def study_plan_generator(grades, target='konkur'):
     
     #create a function that checks the level of grades
     def get_level(score):
@@ -30,7 +30,6 @@ def study_plan_generator(grades, target):
         
     #create a dict for output display
     Plan = {}
-
     #craete a loop to check the input dict(grades)
     for key , value in grades.items() :
         level = get_level(value)
@@ -40,9 +39,7 @@ def study_plan_generator(grades, target):
             Plan[key] = finel_exam(level)
         else:
             Plan[key] = 'uncertain'
-            
     return Plan
-        
     
 #input dict    
 grades = {
@@ -52,7 +49,7 @@ grades = {
 }
 
 #calling the main function
-Plan = study_plan_generator(grades, 'konkur')
+Plan = study_plan_generator(grades, 'final_exam')
 
 #print the output dict(Plan)
 for key, value in Plan.items():
