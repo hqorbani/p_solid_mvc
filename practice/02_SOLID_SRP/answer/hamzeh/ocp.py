@@ -21,12 +21,21 @@ class KonkurStrategy(StrategyProvider):
         }
         return strategies[level]
 
-class GeneralExamStrategy(StrategyProvider):
+class FinalExamStrategy(StrategyProvider):
     def get_strategy(self, level):
         strategies = {
             'poor': 'Comprehensive review + Practice with basic questions',
             'average': 'Practice questions + Review of key points',
             'good': 'Quick review of important concepts'
+        }
+        return strategies[level]
+
+class BeforeNightExamStrategy(StrategyProvider):
+    def get_strategy(self, level):
+        strategies = {
+            'poor': '2a + test',
+            'average': '2a',
+            'good': '2a + sleep'
         }
         return strategies[level]
 
@@ -55,7 +64,7 @@ if target == 'konkur':
 # حالت اول: آمادگی برای کنکور
     strategy = KonkurStrategy()
 elif target == 'general_exam':
-    strategy = GeneralExamStrategy()
+    strategy = FinalExamStrategy()
 advisor = StudyAdvisor(evaluator, strategy)
 konkur_plan = advisor(grades)
 print("Konkur Study Plan:")
